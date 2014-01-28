@@ -9,18 +9,27 @@ App skeleton for new Apps. These skeleton use Zend, bootstrap, jquery and other 
 Dependencies
 ============
 
-<b>NodeJS</b>
+## NodeJS
+
+### Install
+
+#### MacOS
 
 
 
-<b>Grunt</b>
+## GruntJS
+
+### Install
+
+#### MacOS
 
 
+## Composer
 
-<b>Composer</b>
+### Install
 
-Install on Mac globaly:
-
-curl -sS https://getcomposer.org/installer | php<br>
-mv composer.phar /usr/local/bin/composer<br>
-Then use Composer with the composer command.
+#### MacOS
+```
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+```
