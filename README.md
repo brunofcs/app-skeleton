@@ -13,16 +13,16 @@ Dependencies
 
 ### Install
 
-#### MacOS
-
+1. Get NodeJS at: http://nodejs.org/ </br>
+2. Follow the instructions of downloaded files
 
 
 ## GruntJS
 
 ### Install
-
-#### MacOS
-
+```
+npm install -g grunt-cli
+```
 
 ## Composer
 
