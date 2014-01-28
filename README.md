@@ -21,6 +21,6 @@ Dependencies
 
 Install on Mac globaly:
 
-brew tap josegonzalez/homebrew-php<br>
-brew install josegonzalez/php/composer<br>
+curl -sS https://getcomposer.org/installer | php<br>
+mv composer.phar /usr/local/bin/composer<br>
 Then use Composer with the composer command.
