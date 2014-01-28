@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         files: {
         'build/public/js/app.min.js': ['build/public/js/app.js', 'build/public/vendor/dsinmessagebox/dsinMessageBox.js'],
         'build/public/vendor/nProgress/nProgress.min.js': ['build/public/vendor/nProgress/nProgress.js'],
-        'build/public/vendor/parsley/parsley.extend.min.js': ['build/public/vendor/parsley/parsley.extend.js'],
+        'build/public/vendor/parsley/parsley.all.min.js': ['build/public/vendor/parsley/parsley.js', 'build/public/vendor/parsley/parsley.extend.js'],
         'build/public/vendor/dynaTable/jquery.dynatable.min.js': ['build/public/vendor/dynaTable/jquery.dynatable.js'],
         }
       }
