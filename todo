@@ -1,0 +1,69 @@
+
+Lista:
+ ☐ Comentar o app.ini
+
+ ☐ Configurar Https
+ ☐ Fazer Desenho do Fluxo da Informacao 
+ ☐ Neste modelo o usuario pode ser requisitado diversas vezes atraves de identity (Melhorar para deixar apenas uma vez)
+ ☐ Fazer comando que cria uma funcionalidade nova (Cria cOntrollers, cria views)
+ ☐ Otimizar os metodos que criam modal para utilizar um modal manager e implementar os backdrops forward ao invés de cada metodo ter sua implementacao
+ ☐ Os testes devem ser feitos sem entrar na interface por chamadas por fora Ex: PostMan ou curl
+
+ ☐ Configurar o grunt para copiar apenas oque é utilizado do Zend para Build
+ ☐ Fazer o build em uma pasta temporaria e em seguida minificar e e depois copiar para a pasta dist sem os arquivos sem minificacao
+ ☐ Fazer a concatenacao do parseley com o parsley extend (Grunt)
+ ☐ Fazer a concatenacao do DSINMessageBox com o app.js
+ ☐ Minificar e juntar os css que nao estao minificados
+ ☐ Verificar a possibilidade de ustilizar https://github.com/scrutinizer-ci/php-analyzer
+ ☐ Verificar a possibilidade de Utilziar o PHPUnit
+ ☐ Verificar a possibilidade de utilizar o travis-ci
+ ☐ configurar o grunt para pegar a pasta build atraves de uma variavel
+
+Recursos:
+
+  ☐ Validador de Formulário:
+    http://parsleyjs.org/
+
+  ☐ Jquery
+
+  ☐ Zend
+
+  ☐ Dynatable
+      http://www.dynatable.com/
+
+  ☐ NProgress (Load Bar like youtube)
+      http://ricostacruz.com/nprogress/
+      https://github.com/rstacruz/nprogress
+
+  ☐ Yamm 3 Megamenu for bootstrap
+      http://geedmo.github.io/yamm3/
+      https://github.com/geedmo/yamm3
+
+  ☐ MeioMask para mascara dos campos
+
+      http://www.meiocodigo.com/projects/meiomask/
+      https://github.com/fabiomcosta/jquery-meiomask
+
+  ☐ Grunt
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Archive:
+ ✔ Validar JS @done (14-01-28 09:34) @project(Cliente)
+ ✔ Mudar o esquema de passar parametros para a funcao postInfotrmatio para o esquema com parametros nomeados @done (14-01-28 09:34) @project(Lista)
+ ✔ Fazer build @done (14-01-28 09:34) @project(Cliente)
+ ✔ Configurar Grunt @done (14-01-28 09:34) @project(Cliente)
+ ✔ Aplicar o Grunt @done (14-01-27 14:09) @project(Servidor)
+ ✔ Utilizar uma funcao apenas para identificar as mensagens de JSON @done (14-01-22 17:38) @project(Servidor)
+ ✔ Quando nao for REST utilizar API normal, fazer o teste com a autenticacao pois precisa ter outros actions que nao sao do REST @done (14-01-22 16:40) @project(Servidor)
+ ✔ Fazer o Carregando ou Aguarde, no estilo do youtube @done (14-01-22 08:51) @project(Servidor)
+ ✔ Fazer as perguntas dos botoes INlcuir alterar, excluor, (Dejsejas incluir ?) @done (14-01-22 08:51) @project(Servidor)
+ ✔ O cadastro teste ficou faltando ficar vermelho apos a validacao @done (14-01-22 08:50) @project(Servidor)
+ ✔ Verificar usuario logado nas paginas que possuem necessidade @done (14-01-22 08:49) @project(Servidor)
+ ✔ Iniciar Sessao @done (14-01-22 08:49) @project(Servidor)
+ ✔ Fazer redirecionamento quando usuario nao logado @done (14-01-22 08:49) @project(Servidor)
+ ✔ Fazer Login Simples @done (14-01-22 08:49) @project(Servidor)
+ ✔ Dar correta funcionalidade ao CustomAuthAdapter @done (14-01-22 08:49) @project(Servidor)
+ ✔ Comentar o Custom Auth Adapter @done (14-01-22 08:49) @project(Servidor)
+ ✔ Comentar o AutenticacaoController @done (14-01-22 08:49) @project(Servidor)
+ ✔ Comentar o index.php @done (13-12-05 10:21) @project(Servidor)
+ ✔ Comentar o constantes @done (13-12-05 10:21) @project(Servidor)
+ ✔ Fazer funcionar o TesteRest @done (13-12-02 14:38) @project(Servidor)

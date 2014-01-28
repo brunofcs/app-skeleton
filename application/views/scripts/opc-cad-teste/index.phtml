@@ -1,0 +1,202 @@
+<form id="frmCadTeste" method="POST" action="/rest/<?php echo $this->menuURL; ?>" role="form" novalidate parsley-validate>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Cadastro Teste</h4>
+            </div>
+            <div class="modal-body">
+                
+                <input type="hidden" name="method"> 
+                <div class="row">
+                    <div class="col-md-4">
+                        
+                        <div class="form-group">
+                            <label for="codigo">Código</label>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button name="btnProcura" class="btn btn-default" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                    <button name="btnProximoCodigo" class="btn btn-default" type="button">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </span>
+                                <input type="text" id="field_codigo" name="codigo" class="form-control" placeholder="Código" autofocus required>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="descricao">Descrição</label>
+                            <input type="text" id="field_descricao" name="descricao" class="form-control"  placeholder="Descrição" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="observacao">Observações</label>
+                            <input type="text" id="field_observacao" name="observacao" class="form-control"  placeholder="Observação" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="frmCadTesteMessages" class="container"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" name="btnIncluir" disabled>Incluir</button>
+                <button type="button" class="btn btn-default" name="btnAlterar" disabled>Alterar</button>
+                <button type="button" class="btn btn-default" name="btnExcluir" disabled>Excluir</button>
+                <button type="button" class="btn btn-default" name="btnRecarregar">Recarregar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</form>
+<script type="text/javascript">
+(function() {
+
+    var conteudoAlterado = false,
+
+        clearForm = function() {
+            $("#frmCadTeste")[0].reset();
+
+            $('#frmCadTeste button[name=btnIncluir]').prop("disabled", true);
+            $('#frmCadTeste button[name=btnAlterar]').prop("disabled", true);
+            $('#frmCadTeste button[name=btnExcluir]').prop("disabled", true);
+
+            $("#frmCadTesteMessages").empty();
+
+            loadFormValidation('#frmCadTeste', '#frmCadTesteMessages');
+
+            setTimeout(function() {
+                $("#frmCadTeste [autofocus]").focus();
+            }, 30);
+        },
+
+        fillForm = function (data) {
+
+            if (data) {
+
+                if (data.codigo) $('#frmCadTeste input[name=codigo]').val(data.codigo);
+
+                if (data.descricao) $('#frmCadTeste input[name=descricao]').val(data.descricao);
+
+                if (data.observacao) $('#frmCadTeste input[name=observacao]').val(data.observacao);
+
+                if (!data.btnIncluir)
+                    $('#frmCadTeste button[name=btnIncluir]').prop("disabled", true);
+                else 
+                    $('#frmCadTeste button[name=btnIncluir]').prop("disabled", false);
+
+                if (!data.btnAlterar)
+                    $('#frmCadTeste button[name=btnAlterar]').prop("disabled", true);
+                else 
+                    $('#frmCadTeste button[name=btnAlterar]').prop("disabled", false);
+
+                if (!data.btnExcluir)
+                    $('#frmCadTeste button[name=btnExcluir]').prop("disabled", true);
+                else 
+                    $('#frmCadTeste button[name=btnExcluir]').prop("disabled", false);
+
+            }
+        },
+
+        featureConfig = {
+            formID: '#frmCadTeste',
+            messagesContainer: '#frmCadTesteMessages',
+            clearFormCallBack: clearForm,
+            fillFormCallBack: fillForm
+        };
+
+    DSINConnect.attachToForm(featureConfig);
+
+    // Prepara Validação do Formulario
+    $("#frmCadTeste input[name=codigo]").attr("parsley-required-message"     , "Código é obrigatório");
+    $("#frmCadTeste input[name=descricao]").attr("parsley-required-message"  , "Descrição é obrigatório");
+    $("#frmCadTeste input[name=observacao]").attr("parsley-required-message" , "Observação é obrigatório");
+
+    loadFormValidation(featureConfig.formID, featureConfig.messagesContainer);      
+
+    $('#frmCadTeste input[name=codigo]').blur(function (event) {
+
+        if ($(this).val() && conteudoAlterado === true) {
+            conteudoAlterado = false;
+
+            DSINConnect.post($.extend({}, featureConfig, {
+                url: $('#frmCadTeste').attr('action') + '/codigo/' + $('#frmCadTeste input[name=codigo]').val(),
+                method: 'GET'
+            }));
+        }
+
+    }).change(function (event) {
+        conteudoAlterado = true;
+    });
+
+    $("#frmCadTeste button[name=btnProcura]").click(function(event) {
+
+        var loadSelectedData = function () {
+            if(dataSwap) {
+                $('#frmCadTeste input[name=codigo]').val(dataSwap.codigo).focus();
+                conteudoAlterado = true;
+            }
+        };
+
+        openModal('/<?php echo $this->menuURL; ?>/procura', loadSelectedData);
+    });
+
+    $("#frmCadTeste button[name=btnProximoCodigo]").click(function(event) {
+        DSINConnect.post($.extend({}, featureConfig, {
+            url: '/<?php echo $this->menuURL; ?>/proximoCodigo',
+            method: 'POST'
+        }));
+    });
+
+    $("#frmCadTeste button[name=btnIncluir]").click(function(event) {
+        dsinMsgBox.confirm({
+            relativeElement: $("#frmCadTeste .modal-dialog"),
+            confirmMessage: 'Deseja incluir o cadastro teste ?',
+            confirmCallBack: function (result) {
+                if (result) {
+                    $('#frmCadTeste input[name=method]').val('POST');
+                    $('#frmCadTeste').submit();
+                }
+            }
+        });
+    });
+
+    $("#frmCadTeste button[name=btnAlterar]").click(function(event) {
+        dsinMsgBox.confirm({
+            relativeElement: $("#frmCadTeste .modal-dialog"),
+            confirmMessage: 'Deseja alterar o cadastro teste ?',
+            confirmCallBack: function (result) {
+                if (result) {
+                    $('#frmCadTeste input[name=method]').val('PUT');
+                    $('#frmCadTeste').submit();
+                }
+            }
+        });
+    });
+
+    $("#frmCadTeste button[name=btnExcluir]").click(function(event) {
+
+        dsinMsgBox.confirm({
+            relativeElement: $("#frmCadTeste .modal-dialog"),
+            confirmMessage: 'Deseja excluir o cadastro teste ?',
+            confirmButton: dsinMsgBox.BUTTON_YES_DANGER | dsinMsgBox.BUTTON_NO,
+            confirmCallBack: function (result) {
+                if (result) {
+                    $('#frmCadTeste input[name=method]').val('DELETE');
+                    $('#frmCadTeste').submit();
+                }
+            }
+        });
+    });
+
+    $("#frmCadTeste button[name=btnRecarregar]").on('mousedown', function(event) {
+        clearForm();
+    });
+})();
+</script>

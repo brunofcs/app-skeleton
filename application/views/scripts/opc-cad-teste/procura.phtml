@@ -1,0 +1,217 @@
+<form id="frmProcCadTeste" method="POST" action="/rest/<?php echo $this->menuURL; ?>" role="form" novalidate parsley-validate>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Procura Cadastro Teste</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="descricao">Campos de Busca</label>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="campoBusca" value="descricao" checked>
+                                    Descricao
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="campoBusca" value="observacao">
+                                    Observacao
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="observacao">Buscar por:</label>
+                            <div class="input-group">
+                                <input type="text" name="busca" class="form-control" placeholder="Descrição" maxlength="60" autofocus>
+                                <span class="input-group-btn">
+                                    <button name="btnProcura" class="btn btn-default" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="gridProcCadTeste" class="table table-bordered table-striped table-hover dataTable">
+                            <thead>
+                                <tr>
+                                    <th data-dynatable-column="codigo" class="dynatable-head">Codigo</th>
+                                    <th data-dynatable-column="descricao" class="dynatable-head">Descrição</th>
+                                    <th data-dynatable-column="observacao" class="dynatable-head">Observação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" name="btnSelecionar">Selecionar</button>
+                <button type="button" class="btn btn-default" name="btnRecarregar">Recarregar</button>
+                <button type="button" class="btn btn-default" name="btnFechar">Fechar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</form>
+<script type="text/javascript">
+(function() {
+
+    var doSearch = function() {
+
+            dataTable.queries.remove('campoBusca');
+            dataTable.queries.remove('busca');
+
+            dataTable.queries.add('campoBusca', $('#frmProcCadTeste input:radio[name=campoBusca]:checked').val());
+            dataTable.queries.add('busca', $('#frmProcCadTeste input[name=busca]').val());
+
+            dataTable.process();
+        
+        },
+
+        clearForm = function() {
+            
+            $("#frmProcCadTeste")[0].reset();
+
+            $("#frmProcCadTeste button[name=selecionar]").prop("disabled", true);
+
+            dataTable.sorts.clear();
+            dataTable.sorts.add('descricao', 1);
+
+            doSearch();
+
+            setTimeout(function() {
+                $("#frmProcCadTeste [autofocus]").focus();
+            }, 30);
+
+        },
+
+        gridConfig = {
+            multSelect: false
+        },
+
+        featureConfig = {
+            formID: '#frmProcCadTeste',
+            clearFormCallBack: clearForm
+        },
+
+        dataTable = $('#gridProcCadTeste')
+
+        .bind('dynatable:init', function(e, dynatable) {
+            dynatable.queries.add('campoBusca', $('#frmProcCadTeste input:radio[name=campoBusca]:checked').val());
+            dynatable.sorts.add('descricao', 1);
+        })
+
+        .dynatable({
+            features: {
+                search: false,
+                pushState: false,
+                perPageSelect: false
+            },
+            dataset: {
+                ajax: true,
+                ajaxUrl: $('#frmProcCadTeste').attr('action'),
+                ajaxOnLoad: true,
+                records: [],
+                perPageDefault: 10,
+                perPageOptions: []
+            },
+            inputs: {
+                queryEvent: null,
+                paginationPrev: 'Anterior',
+                paginationNext: 'Próxima',
+                recordCountText: 'Mostrando ',
+                processingText: 'Aguarde...'
+
+            },
+        })
+
+        .data('dynatable');
+
+
+    DSINConnect.attachToForm(featureConfig);
+
+    $('#gridProcCadTeste').on("click", "tbody tr", function (e) {
+
+        if(!gridConfig.multSelect && $('#gridProcCadTeste tbody tr.success').length > 0) {
+
+            $('#gridProcCadTeste tbody tr.success').toggleClass('success');
+        }
+        $(this).toggleClass('success');
+    });
+
+    $('#gridProcCadTeste').on("dblclick", "tbody tr", function(e) {
+
+        var elm = $('#gridProcCadTeste tbody tr.success');
+        if(elm.length > 0) {
+
+            dataSwap = dataTable.records.getRecord(elm.index());
+            $('#frmProcCadTeste').parent().modal('hide');
+
+        } else {
+            alert('Atenção. Nenhum registro selecionado.');
+        }
+        
+    });
+
+
+    $('#frmProcCadTeste input[name=busca]').on('keypress', function(e) {
+        if(e.which == 13) {
+            e.preventDefault();
+
+            doSearch();
+        }
+    });
+
+    $('#frmProcCadTeste input[name=campoBusca]').change(function(e) {
+
+        if($(this).attr('name') == 'campoBusca') {
+
+            $('#frmProcCadTeste input[name=busca]').val('')
+            .attr('placeholder', $(this).val() == 'observacao' ? 'Observação' : 'Descrição')
+            .focus();
+        }
+
+        doSearch();
+    });
+
+    $('#frmProcCadTeste button[name=btnProcura]').click(function() {
+        doSearch();
+        $('#frmProcCadTeste [autofocus]').focus();
+    });
+
+    $('#frmProcCadTeste button[name=btnSelecionar]').click(function() {
+        var elm = $('#gridProcCadTeste tbody tr.success');
+        if(elm.length > 0) {
+
+            dataSwap = dataTable.records.getRecord(elm.index());
+            $('#frmProcCadTeste').parent().modal('hide');
+
+        } else {
+            alert('Atenção. Nenhum registro selecionado.');
+        }
+    });
+
+    $('#frmProcCadTeste button[name=btnRecarregar]').click(clearForm);
+
+    $('#frmProcCadTeste button[name=btnFechar]').click(function() {
+        dataSwap = null;
+        $('#frmProcCadTeste').parent().modal('hide');
+    });
+
+    setTimeout(function() {
+        $("#frmProcCadTeste [autofocus]").focus();
+    }, 100);
+
+})();
+</script>

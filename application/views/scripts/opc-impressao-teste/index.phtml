@@ -1,0 +1,247 @@
+<form id="frmImpressaoTeste" method="POST" action="/<?php echo $this->menuURL; ?>/imprime" role="form" novalidate parsley-validate target="printFrame">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Impressão Teste</h4>
+            </div>
+            <div class="modal-body">
+                
+                <input type="hidden" name="method"> 
+                <div class="row">
+                    <div class="col-md-12" style="text-align: center;">
+                        <div class="form-group">
+                            <label for="tipoPeriodo">Tipo de Período</label><br>
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-primary active">
+                                    <input type="radio" name="tipoPeriodo" id="option1" value="1" checked> Período
+                                </label>
+                                <label class="btn btn-primary">
+                                    <input type="radio" name="tipoPeriodo" id="option2" value="2"> Referência
+                                </label>
+                                <label class="btn btn-primary">
+                                    <input type="radio" name="tipoPeriodo" id="option3" value="3"> Ano
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="periodo">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="dataInicial">Início</label>
+                                <input type="text" name="dataInicial" maxlength="10" class="form-control" placeholder="Data Inicial" parsley-braziliandate="true">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="dataFinal">Fim</label>
+                                <input type="text" name="dataFinal" maxlength="10" class="form-control"  placeholder="Data Final" parsley-braziliandate="true">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ano" style="display: none;">
+                        <div class="col-md-6 col-md-offset-3" style="text-align: center;">
+                            <div class="form-group">
+                                <label for="ano">Ano</label>
+                                <input type="text" name="ano" maxlength="4" class="form-control" placeholder="Ano" parsley-type="digits" parsley-minlength="4">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="referencia" style="display: none">
+
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label for="referencia1">Inicio</label>
+                                <select name="referencia1" class="form-control col-md-2">
+                                    <option value=""></option>
+                                    <option value="1">JANEIRO</option>
+                                    <option value="2">FEVEREIRO</option>
+                                    <option value="3">MARÇO</option>
+                                    <option value="4">ABRIL</option>
+                                    <option value="5">MAIO</option>
+                                    <option value="6">JUNHO</option>
+                                    <option value="7">JULHO</option>
+                                    <option value="8">AGOSTO</option>
+                                    <option value="9">SETEMBRO</option>
+                                    <option value="10">OUTUBRO</option>
+                                    <option value="11">NOVEMBRO</option>
+                                    <option value="12">DEZEMBRO</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="referencia"></label>
+                                <input type="text" name="anoRef1" maxlength="4" class="form-control col-md-2"  placeholder="Ano" parsley-type="digits" parsley-minlength="4">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="referencia">Final</label>
+                                <select name="referencia2" class="form-control">
+                                    <option value=""></option>
+                                    <option value="1">JANEIRO</option>
+                                    <option value="2">FEVEREIRO</option>
+                                    <option value="3">MARÇO</option>
+                                    <option value="4">ABRIL</option>
+                                    <option value="5">MAIO</option>
+                                    <option value="6">JUNHO</option>
+                                    <option value="7">JULHO</option>
+                                    <option value="8">AGOSTO</option>
+                                    <option value="9">SETEMBRO</option>
+                                    <option value="10">OUTUBRO</option>
+                                    <option value="11">NOVEMBRO</option>
+                                    <option value="12">DEZEMBRO</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="referencia"> </label>
+                                <input type="text" name="anoRef2" maxlength="4" class="form-control"  placeholder="Ano" parsley-type="digits" parsley-minlength="4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                        <div class="form-group">
+                                <label for="formato">Formato</label>
+                                <select name="formato" class="form-control">
+                                    <option value="1">PDF</option>
+                                    <option value="2">HTML</option>
+                                    <option value="3">Excel</option>
+                                </select>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div id="frmImpressaoTesteMessages" class="container"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" name="btnImprimir" <?php echo ($this->btnImprimir ? '' : 'disabled'); ?>>Visualizar</button>
+                <button type="button" class="btn btn-default" name="btnRecarregar">Recarregar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</form>
+<script type="text/javascript">
+(function() {
+
+    var clearForm = function() {
+
+        var checkedTipo = $("#frmImpressaoTeste input[name=tipoPeriodo]:checked");
+
+        $("#frmImpressaoTeste")[0].reset();
+
+        $('#frmImpressaoTeste button[name=btnImprimir]').prop("disabled", "<?php echo $this->btnImprimir ? 'false' : 'true'; ?>");
+
+        $("#frmImpressaoTesteMessages").empty();
+
+        loadFormValidation('#frmImpressaoTeste', '#frmImpressaoTesteMessages');
+
+        setTimeout(function() {
+            if(!checkedTipo.length) {
+                $("#frmImpressaoTeste input[name=tipoPeriodo][value=1]").attr("checked", true);
+                $("#frmImpressaoTeste input[name=tipoPeriodo][value=1]").parent().toggleClass("active");
+            }
+            $('input:visible, select:visible').first().focus();
+        }, 60);
+    };
+
+    function adicionaRegrasValidacao() {
+
+        loadFormValidation('#frmImpressaoTeste', '#frmImpressaoTesteMessages');
+
+        $('div.periodo, div.referencia, div.ano').css('display', 'none');
+
+        switch(parseInt($('#frmImpressaoTeste input[name=tipoPeriodo]:checked').val(), 10)) {
+            case 2:
+                $('#frmImpressaoTeste select[name=referencia1]').parsley('addConstraint', {required: true});
+                $('#frmImpressaoTeste input[name=anoRef1]').parsley('addConstraint', {required: true});
+                $('#frmImpressaoTeste select[name=referencia2]').parsley('addConstraint', {required: true});
+                $('#frmImpressaoTeste input[name=anoRef2]').parsley('addConstraint', {required: true});
+
+                $('div.referencia').css('display', '');
+
+                $('#frmImpressaoTeste select[name=referencia1]').focus();
+
+                break;
+            case 3: 
+
+                $('#frmImpressaoTeste input[name=ano]').parsley('addConstraint', {required: true});
+
+                $('div.ano').css('display', '');
+
+                $('#frmImpressaoTeste input[name=ano]').focus();
+
+                break;
+
+            case 1:
+                $('#frmImpressaoTeste input[name=dataInicial], #frmImpressaoTeste input[name=dataFinal]').each(function() {
+                    $(this).parsley('addConstraint', {required: true});
+                });
+
+                $('div.periodo').css('display', '');
+
+                $('#frmImpressaoTeste input[name=dataInicial]').focus();
+
+                break;
+        }
+    }
+
+    // Prepara Validação do Formulario
+    $('#frmImpressaoTeste input[name=dataInicial]').attr('parsley-required-message'     , 'Data inicial obrigatória');
+    $('#frmImpressaoTeste input[name=dataFinal]').attr('parsley-required-message'       , 'Data final obrigatória');
+    $('#frmImpressaoTeste input[name=dataInicial]').attr('parsley-braziliandate-message', 'Data inicial inválida');
+    $('#frmImpressaoTeste input[name=dataFinal]').attr('parsley-braziliandate-message'  , 'Data final inválida');
+    $('#frmImpressaoTeste input[name=ano]').attr("parsley-required-message"             , "Ano obrigatório");
+    $('#frmImpressaoTeste input[name=ano]').attr("parsley-type-digits-message"          , "Ano com formato incorreto");
+    $('#frmImpressaoTeste input[name=ano]').attr("parsley-minlength-message"            , "Ano deve conter 4 digitos");
+    $('#frmImpressaoTeste select[name=referencia1]').attr("parsley-required-message"    , "Referencia inicial obrigatória");
+    $('#frmImpressaoTeste input[name=anoRef1]').attr("parsley-required-message"         , "Ano da referencia inicial obrigatório.");
+    $('#frmImpressaoTeste input[name=anoRef1]').attr("parsley-type-digits-message"      , "Ano da referencia inicial formato incorreto");
+    $('#frmImpressaoTeste input[name=anoRef1]').attr("parsley-minlength-message"        , "Ano da referencia inicial deve conter 4 digitos");
+    $('#frmImpressaoTeste select[name=referencia2]').attr("parsley-required-message"    , "Referencia inicial obrigatória");
+    $('#frmImpressaoTeste input[name=anoRef2]').attr("parsley-required-message"         , "Ano da referencia final obrigatório.");
+    $('#frmImpressaoTeste input[name=anoRef2]').attr("parsley-type-digits-message"      , "Ano da referencia final formato incorreto");
+    $('#frmImpressaoTeste input[name=anoRef2]').attr("parsley-minlength-message"        , "Ano da referencia final deve conter 4 digitos");
+
+    // Prepara as mascaras
+    $('#frmImpressaoTeste input[name=dataInicial]').setMask('date');
+    $('#frmImpressaoTeste input[name=dataFinal]').setMask('date');
+
+    adicionaRegrasValidacao();
+
+    $('#frmImpressaoTeste input[name=tipoPeriodo]').on('change', function() {
+        adicionaRegrasValidacao();
+    });
+
+    $("#frmImpressaoTeste button[name=btnImprimir]").click(function(event) {
+        dsinMsgBox.confirm({
+            relativeElement: $("#frmImpressaoTeste .modal-dialog"),
+            confirmMessage: 'Deseja prosseguir com a impressão ?',
+            confirmCallBack: function(result) {
+                if(result) {
+                    $('#frmImpressaoTeste').parsley('validate');
+                    if($('#frmImpressaoTeste').parsley('isValid'))
+                        openPrintModal('#frmImpressaoTeste');
+                }
+            }
+        });
+      });
+
+    $("#frmImpressaoTeste button[name=btnRecarregar]").on('mousedown', function(event) {
+        clearForm();
+    });
+
+  })();
+  </script>
