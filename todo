@@ -1,6 +1,5 @@
 
 Lista:
- ☐ Comentar o app.ini
 
  ☐ Configurar Https
  ☐ Fazer Desenho do Fluxo da Informacao 
@@ -11,13 +10,13 @@ Lista:
 
  ☐ Configurar o grunt para copiar apenas oque é utilizado do Zend para Build
  ☐ Fazer o build em uma pasta temporaria e em seguida minificar e e depois copiar para a pasta dist sem os arquivos sem minificacao
- ☐ Fazer a concatenacao do parseley com o parsley extend (Grunt)
  ☐ Fazer a concatenacao do DSINMessageBox com o app.js
  ☐ Minificar e juntar os css que nao estao minificados
  ☐ Verificar a possibilidade de ustilizar https://github.com/scrutinizer-ci/php-analyzer
  ☐ Verificar a possibilidade de Utilziar o PHPUnit
  ☐ Verificar a possibilidade de utilizar o travis-ci
  ☐ configurar o grunt para pegar a pasta build atraves de uma variavel
+ ☐ Testar carregamento separado do js das paginas
 
 Recursos:
 
@@ -47,6 +46,7 @@ Recursos:
   ☐ Grunt
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+ ✔ Fazer a concatenacao do parseley com o parsley extend (Grunt) @done (14-01-28 14:35) @project(Lista)
  ✔ Validar JS @done (14-01-28 09:34) @project(Cliente)
  ✔ Mudar o esquema de passar parametros para a funcao postInfotrmatio para o esquema com parametros nomeados @done (14-01-28 09:34) @project(Lista)
  ✔ Fazer build @done (14-01-28 09:34) @project(Cliente)
