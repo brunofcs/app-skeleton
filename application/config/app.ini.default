@@ -12,18 +12,18 @@
 [production]
 database.adapter         = "Firebird"
 database.params.dbname   = "D:\\TEMP\\SKELETON.FDB"
-database.params.host     = "192.168.1.204"
+database.params.host     = "127.0.0.1"
 database.params.username = "DSIN"
-database.params.password = "omega"
-database.params.port     = "3025"
+database.params.password = "XXXX"
+database.params.port     = "3050"
 database.params.charset  = "UTF-8"
 database.params.dialect  = "3"
 
 databaseImg.adapter         = "Firebird"
-databaseImg.params.dbname   = "/Users/brunosilva/projects/data/SGITSPIMAGENS.FDB"
+databaseImg.params.dbname   = "PATH_TO_DATABASE"
 databaseImg.params.host     = "127.0.0.1"
 databaseImg.params.username = "DSIN"
-databaseImg.params.password = "omega"
+databaseImg.params.password = "XXXXX"
 databaseImg.params.port     = "3050"
 databaseImg.params.charset  = "UTF-8"
 databaseImg.params.dialect  = "3"
@@ -32,8 +32,8 @@ imageMagick.converte = "..\imageMagick\convert.exe"
 
 [development : production]
 database.params.dbname   = "D:\\TEMP\\SKELETON.FDB"
-databaseImg.params.dbname = "/Users/brunosilva/projects/data/SGITSPIMAGENS.FDB"
+databaseImg.params.dbname   = "PATH_TO_DATABASE"
 
 [testing : production]
 database.params.dbname   = "D:\\TEMP\\SKELETON.FDB"
-databaseImg.params.dbname = "/Users/brunosilva/projects/data/SGITSPIMAGENS.FDB"
+databaseImg.params.dbname   = "PATH_TO_DATABASE"
