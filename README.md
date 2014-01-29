@@ -33,3 +33,14 @@ npm install -g grunt-cli
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 ```
+
+## php-analyzer
+
+Performs advanced static analysis on PHP code 
+https://scrutinizer-ci.com/docs/tools/php/php-analyzer/
+
+### Install
+
+```
+composer create-project scrutinizer/php-analyzer:dev-master
+```
