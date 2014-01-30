@@ -82,6 +82,8 @@ class AutenticacaoController extends DefaultViewController
 
         } catch(Exception $ex) {
 
+            
+
             // Limpa a autenticacao da sessao corrente
             Zend_Auth::getInstance()->clearIdentity();
 

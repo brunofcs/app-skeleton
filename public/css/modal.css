@@ -1,0 +1,109 @@
+/* Configuracao das Janelas Modais*/
+.modal-header-dsin {
+
+  background: #efefef;
+  padding: 10px 10px 5px 10px;
+  border-bottom: 1px solid #cccccc;
+  -webkit-border-top-left-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  -moz-border-radius-topright: 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+
+}
+
+.modal-header-dsin .modal-title {
+  color: #7e7e7e;
+}
+
+.modal-body-dsin {
+  padding: 0;
+}
+
+.modal-footer-dsin {
+  padding: 10px; 
+  margin-top: 0;
+  background: #efefef;
+  border-top: 1px solid #cccccc;
+  -webkit-border-bottom-left-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  -moz-border-radius-bottomright: 4px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.modal-row {
+  display: table;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.modal-row table {
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.row-dotted-border {
+    border-bottom: 1px dotted #bab9b9;
+}
+
+.row-filled {
+
+  background: #f8f8f8;
+
+}
+
+.modal-row label {
+
+  font-size: 70%;
+  font-weight: normal;
+
+}
+
+.modal-row .h4 {
+  display: table;
+  padding: 10px 7px 7px 7px;
+  margin: 0;
+  border-bottom: 1px solid #cccccc;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.btn-group-dsin button {
+
+  background-color: #eeeeee;
+  border: 1px solid #ccc;
+}
+
+.btn-group-dsin button span {
+
+  color:#7e7e7e;
+  text-shadow: 0 1px 0 #ffffff;
+}
+
+.form-group {
+  margin: 2px;
+}
+
+.form-group-dsin {
+    display: table;
+    float: left;
+    padding: 3px;
+    margin-bottom: 10px;
+}
+
+.form-control-dsin {
+  padding: 6px;
+  font-size: 13px;
+}
+
+.modal-footer-dsin button .glyph-blue {
+  color:#5c8ab6;
+}
+
+.modal-footer-dsin button .glyph-green {
+  color:#62b776;
+}

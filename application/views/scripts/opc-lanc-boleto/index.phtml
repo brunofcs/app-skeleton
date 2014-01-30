@@ -1,0 +1,342 @@
+<form id="frmLancBoleto" method="POST" action="/rest/<?php echo $this->menuURL; ?>" role="form" novalidate parsley-validate>
+    <input type="hidden" name="method"> 
+    <div class="modal-dialog" style="min-width: 1000px;">
+        <div class="modal-content">
+            <div class="modal-header modal-header-dsin">
+                <button type="button" class="close"><span class="glyphicon glyphicon-info-sign"></span></button>
+                <h5 class="modal-title"><span class="glyphicon glyphicon-list-alt">&nbsp;</span>Lançamento | Boleto</h5>
+            </div>
+            <div class="modal-body modal-body-dsin">
+                <div class="modal-row row-dotted-border">
+                    <h4 class="h4">Dados do Processo</h4>
+                    <div class="form-group-dsin">
+                        <label for="codigo">*Processo</label>
+                        <div class="input-group">
+                            <span class="input-group-btn btn-group-dsin">
+                                <button name="btnProcura" class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                            <input type="text" name="processo" class="form-control form-control-dsin" placeholder="Processo" size="5" autofocus required>
+                            <span class="input-group-btn btn-group-dsin">
+                                <button name="btnProximoCodigo" class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group-dsin">
+                        <label for="codigo">*Data Patio</label>
+                        <div class="input-group">
+                            <input type="text" name="dataPatio" class="form-control form-control-dsin" placeholder="Data Patio" size="6" required>
+                            <span class="input-group-btn btn-group-dsin">
+                                <button name="btnProximoCodigo" class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group-dsin">
+                        <label for="codigo">*Hora Patio</label>
+                        <input type="text" name="dataPatio" class="form-control form-control-dsin" placeholder="Hora" size="3" required>
+                    </div>
+                    <div class="form-group-dsin">
+                        <label for="codigo">*Reboque</label>
+                        <input type="text" name="dataPatio" class="form-control form-control-dsin" placeholder="Reboque" size="4" required>
+                    </div>
+                    <div class="form-group-dsin">
+                        <label for="codigo">*Placa</label>
+                        <input type="text" name="dataPatio" class="form-control form-control-dsin" placeholder="PLACA" size="5" required>
+                    </div>
+                    <div class="form-group-dsin">
+                        <label for="codigo">*Marca / Modelo</label>
+                        <input type="text" name="dataPatio" class="form-control form-control-dsin" placeholder="MARCA / MODELO" size="30" required>
+                    </div>
+                    
+                    <div class="form-group-dsin">
+                        <label for="codigo">*Municipio</label>
+                        <input type="text" name="dataPatio" class="form-control form-control-dsin" placeholder="SAO JOSE DOS PINHAIS" size="23" required>
+                    </div>
+                </div>
+                <div class="modal-row row-dotted-border row-filled">
+                    <h4 class="h4">Dados Para Calculo</h4>
+                    <div class="form-group-dsin">
+                        <label for="codigo">*Nome do Contribuinte</label>
+                        <input type="text" name="processo" class="form-control form-control-dsin" placeholder="Contribuinte" size="30" autofocus required>
+                    </div>
+                    
+                    <div class="form-group-dsin">
+                        <label for="codigo">*Endereço</label>
+                        <input type="text" name="processo" class="form-control form-control-dsin" placeholder="Endereço" size="40" autofocus required>
+                    </div>
+                    
+                    <div class="form-group-dsin">
+                        <label for="codigo">*Número</label>
+                        <input type="text" name="processo" class="form-control form-control-dsin" placeholder="Num." size="5" autofocus required>
+                    </div>
+                    
+                    <div class="form-group-dsin">
+                        <label for="codigo">*Complemento</label>
+                        <input type="text" name="processo" class="form-control form-control-dsin" placeholder="Complemento" size="15" autofocus required>
+                    </div>
+                    
+                    <div class="form-group-dsin">
+                        <label for="codigo">*Bairro</label>
+                        <input type="text" name="processo" class="form-control form-control-dsin" placeholder="Bairro" size="15" autofocus required>
+                    </div>
+                    <br/>
+                    
+                    <div class="form-group-dsin">
+                        <label for="codigo">*Município</label>
+                        <input type="text" name="processo" class="form-control form-control-dsin" placeholder="Município" size="20" autofocus required>
+                    </div>
+                    
+                    <div class="form-group-dsin">
+                        <label for="codigo">*CEP</label>
+                        <input type="text" name="processo" class="form-control form-control-dsin" placeholder="CEP" size="7" autofocus required>
+                    </div>
+                    
+                    <div class="form-group-dsin">
+                        <label for="codigo">*RG</label>
+                        <input type="text" name="processo" class="form-control form-control-dsin" placeholder="RG" size="12" autofocus required>
+                    </div>
+                    
+                    <div class="form-group-dsin">
+                        <label for="codigo">*CPF</label>
+                        <input type="text" name="processo" class="form-control form-control-dsin" placeholder="CPF" size="12" autofocus required>
+                    </div>
+                    <div class="form-group-dsin">
+                        <label for="codigo">*Data Base Cálculo</label>
+                        <div class="input-group">
+                            <input type="text" name="dataPatio" class="form-control form-control-dsin" placeholder="Data Base" size="8" required>
+                            <span class="input-group-btn btn-group-dsin">
+                                <button name="btnProximoCodigo" class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group-dsin">
+                        <label for="codigo">*Data Vencimento</label>
+                        <div class="input-group">
+                            <input type="text" name="dataPatio" class="form-control form-control-dsin" placeholder="Data Vencimento" size="8" required>
+                            <span class="input-group-btn btn-group-dsin">
+                                <button name="btnProximoCodigo" class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group-dsin">
+                        <label for="codigo">*Permanencia</label>
+                        <input type="text" name="dataPatio" class="form-control form-control-dsin" placeholder="Permanencia" size="14" required>
+                    </div>
+                </div>
+                <div class="modal-row">
+                    <h4 class="h4">Tarifas Calculadas</h4>
+                    <table class="table table-condensed table-striped table-bordered" style="width: 95%;" align="center">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Descricao</th>
+                                <th>Valor Unitario</th>
+                                <th>Quantidade</th>
+                                <th>Valor</th>
+                                <th>Desconto</th>
+                                <th>Valor Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2</td>
+                                <td>Reboque Motocicleta</td>
+                                <td>R$ 20,00</td>
+                                <td>R$ 20,00</td>
+                                <td>R$ 20,00</td>
+                                <td>R$ 20,00</td>
+                                <td>R$ 20,00</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Diaria Motocicleta</td>
+                                <td>R$ 15,00</td>
+                                <td>R$ 15,00</td>
+                                <td>R$ 15,00</td>
+                                <td>R$ 15,00</td>
+                                <td>R$ 15,00</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Taxa de Serviço</td>
+                                <td>R$ 29,90</td>
+                                <td>R$ 29,90</td>
+                                <td>R$ 29,90</td>
+                                <td>R$ 29,90</td>
+                                <td>R$ 29,90</td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="tfoot">
+                            <tr>
+                                <td colspan="6"><b>TOTAL</b</td>
+                                <td><span class="text-info"><b>R$ 125,00</b></span></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer modal-footer-dsin">
+            <button type="button" class="btn btn-default" name="btnIncluir" > <span class="glyphicon glyphicon-ok glyph-blue"></span> Incluir</button>
+            <button type="button" class="btn btn-default" name="btnAlterar" ><span class="glyphicon glyphicon-edit glyph-blue"></span> Alterar</button>
+            <button type="button" class="btn btn-default" name="btnExcluir" ><span class="glyphicon glyphicon-remove glyph-blue" ></span> Excluir</button>
+            <button type="button" class="btn btn-default" name="btnRecarregar"><span class="glyphicon glyphicon-refresh glyph-blue"></span> Recarregar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" ><span class="glyphicon glyphicon-log-out glyph-green"></span> Fechar</button>
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</form>
+<script type="text/javascript">
+(function() {
+
+    var conteudoAlterado = false,
+
+    clearForm = function() {
+        $("#frmLancBoleto")[0].reset();
+
+        $('#frmLancBoleto button[name=btnIncluir]').prop("disabled", true);
+        $('#frmLancBoleto button[name=btnAlterar]').prop("disabled", true);
+        $('#frmLancBoleto button[name=btnExcluir]').prop("disabled", true);
+
+        $("#frmLancBoletoMessages").empty();
+
+        loadFormValidation('#frmLancBoleto', '#frmLancBoletoMessages');
+
+        setTimeout(function() {
+            $("#frmLancBoleto [autofocus]").focus();
+        }, 30);
+    },
+
+    fillForm = function (data) {
+
+        if (data) {
+
+            if (data.codigo) $('#frmLancBoleto input[name=codigo]').val(data.codigo);
+
+            if (data.descricao) $('#frmLancBoleto input[name=descricao]').val(data.descricao);
+
+            if (data.observacao) $('#frmLancBoleto input[name=observacao]').val(data.observacao);
+
+            if (!data.btnIncluir)
+                $('#frmLancBoleto button[name=btnIncluir]').prop("disabled", true);
+            else 
+                $('#frmLancBoleto button[name=btnIncluir]').prop("disabled", false);
+
+            if (!data.btnAlterar)
+                $('#frmLancBoleto button[name=btnAlterar]').prop("disabled", true);
+            else 
+                $('#frmLancBoleto button[name=btnAlterar]').prop("disabled", false);
+
+            if (!data.btnExcluir)
+                $('#frmLancBoleto button[name=btnExcluir]').prop("disabled", true);
+            else 
+                $('#frmLancBoleto button[name=btnExcluir]').prop("disabled", false);
+
+        }
+    },
+
+    featureConfig = {
+        formID: '#frmLancBoleto',
+        messagesContainer: '#frmLancBoletoMessages',
+        clearFormCallBack: clearForm,
+        fillFormCallBack: fillForm
+    };
+
+    DSINConnect.attachToForm(featureConfig);
+
+    // Prepara Validação do Formulario
+    $("#frmLancBoleto input[name=codigo]").attr("parsley-required-message"     , "Código é obrigatório");
+    $("#frmLancBoleto input[name=descricao]").attr("parsley-required-message"  , "Descrição é obrigatório");
+    $("#frmLancBoleto input[name=observacao]").attr("parsley-required-message" , "Observação é obrigatório");
+
+    loadFormValidation(featureConfig.formID, featureConfig.messagesContainer);      
+
+    $('#frmLancBoleto input[name=codigo]').blur(function (event) {
+
+        if ($(this).val() && conteudoAlterado === true) {
+            conteudoAlterado = false;
+
+            DSINConnect.post($.extend({}, featureConfig, {
+                url: $('#frmLancBoleto').attr('action') + '/codigo/' + $('#frmLancBoleto input[name=codigo]').val(),
+                method: 'GET'
+            }));
+        }
+
+    }).change(function (event) {
+        conteudoAlterado = true;
+    });
+
+    $("#frmLancBoleto button[name=btnProcura]").click(function(event) {
+
+        var loadSelectedData = function () {
+            if(dataSwap) {
+                $('#frmLancBoleto input[name=codigo]').val(dataSwap.codigo).focus();
+                conteudoAlterado = true;
+            }
+        };
+
+        openModal('/<?php echo $this->menuURL; ?>/procura', loadSelectedData);
+    });
+
+    $("#frmLancBoleto button[name=btnProximoCodigo]").click(function(event) {
+        DSINConnect.post($.extend({}, featureConfig, {
+            url: '/<?php echo $this->menuURL; ?>/proximoCodigo',
+            method: 'POST'
+        }));
+    });
+
+    $("#frmLancBoleto button[name=btnIncluir]").click(function(event) {
+        dsinMsgBox.confirm({
+            relativeElement: $("#frmLancBoleto .modal-dialog"),
+            confirmMessage: 'Deseja incluir o cadastro teste ?',
+            confirmCallBack: function (result) {
+                if (result) {
+                    $('#frmLancBoleto input[name=method]').val('POST');
+                    $('#frmLancBoleto').submit();
+                }
+            }
+        });
+    });
+
+    $("#frmLancBoleto button[name=btnAlterar]").click(function(event) {
+        dsinMsgBox.confirm({
+            relativeElement: $("#frmLancBoleto .modal-dialog"),
+            confirmMessage: 'Deseja alterar o cadastro teste ?',
+            confirmCallBack: function (result) {
+                if (result) {
+                    $('#frmLancBoleto input[name=method]').val('PUT');
+                    $('#frmLancBoleto').submit();
+                }
+            }
+        });
+    });
+
+    $("#frmLancBoleto button[name=btnExcluir]").click(function(event) {
+
+        dsinMsgBox.confirm({
+            relativeElement: $("#frmLancBoleto .modal-dialog"),
+            confirmMessage: 'Deseja excluir o cadastro teste ?',
+            confirmButton: dsinMsgBox.BUTTON_YES_DANGER | dsinMsgBox.BUTTON_NO,
+            confirmCallBack: function (result) {
+                if (result) {
+                    $('#frmLancBoleto input[name=method]').val('DELETE');
+                    $('#frmLancBoleto').submit();
+                }
+            }
+        });
+    });
+
+    $("#frmLancBoleto button[name=btnRecarregar]").on('mousedown', function(event) {
+        clearForm();
+    });
+})();
+</script>

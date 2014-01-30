@@ -79,7 +79,7 @@ $registry->dbAdapter = $dbAdapter;
 Zend_Db_Table_Abstract::setDefaultAdapter($registry->dbAdapter);
 
 
-// Conexão com o banco de imagem
+// // Conexão com o banco de imagem
 // $dbImgAdapter 			= Zend_Db::factory($configuration->databaseImg);
 // $registry->dbImgAdapter = $dbImgAdapter;
 
@@ -99,6 +99,7 @@ try {
 
 	// Catch Database connection exceptions
 	} catch(ZendX_Db_Adapter_Firebird_Exception $zexfb) {
+
 		// lanca excecao
 		throw new DSINWebAppsException(DSINWebAppsException::ERRO_BANCO_DADOS_DESCONECTADO);
 	}

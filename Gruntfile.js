@@ -4,46 +4,46 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     uglify: {
-      build: {
-        files: {
-        'build/public/js/app.min.js': ['build/public/js/app.js', 'build/public/vendor/dsinmessagebox/dsinMessageBox.js'],
-        'build/public/vendor/nProgress/nProgress.min.js': ['build/public/vendor/nProgress/nProgress.js'],
-        'build/public/vendor/parsley/parsley.all.min.js': ['build/public/vendor/parsley/parsley.js', 'build/public/vendor/parsley/parsley.extend.js'],
-        'build/public/vendor/dynaTable/jquery.dynatable.min.js': ['build/public/vendor/dynaTable/jquery.dynatable.js'],
+        build: {
+            files: {
+                'build/public/js/app.min.js': ['build/public/js/app.js', 'build/public/vendor/dsinmessagebox/dsinMessageBox.js'],
+                'build/public/vendor/nProgress/nProgress.min.js': ['build/public/vendor/nProgress/nProgress.js'],
+                'build/public/vendor/parsley/parsley.all.min.js': ['build/public/vendor/parsley/parsley.js', 'build/public/vendor/parsley/parsley.extend.js'],
+                'build/public/vendor/dynaTable/jquery.dynatable.min.js': ['build/public/vendor/dynaTable/jquery.dynatable.js'],
+            }
         }
-      }
     },
     jshint: {
-      all: ['Gruntfile.js', 'public/js/**/*.js', 'public/vendor/dsinmessagebox/**/*.js']
+        all: ['Gruntfile.js', 'public/js/**/*.js', 'public/vendor/dsinmessagebox/**/*.js']
     },
     jslint: { // configure the task
           // lint your project's client code
           client: {
             src: [
-              'public/js/**/*.js',
-              'public/vendor/dsinmessagebox/**/*.js'
+            'public/js/**/*.js',
+            'public/vendor/dsinmessagebox/**/*.js'
             ],
             directives: {
-              browser: true,
-              plusplus: true,
-              unparam: true,
-              bitwise: true,
-              predef: [
+                browser: true,
+                plusplus: true,
+                unparam: true,
+                bitwise: true,
+                predef: [
                 'jQuery', '$', 'NProgress', 'dsinMsgBox'
-              ]
+                ]
             }
           }
-    },
+        },
 
-    inlinelint: {
-      html: ['application/views/scripts/**/*.html'],
-      php: ['application/views/scripts/**/*.phtml']
-    },
+        inlinelint: {
+            html: ['application/views/scripts/**/*.html'],
+            php: ['application/views/scripts/**/*.phtml']
+        },
 
-    copy: {
+        copy: {
 
-      buildAll: {
-        files: [
+            buildAll: {
+                files: [
               // Application Files - includes files within path
               {expand: true, src: ['application/**'], dest: 'build/'},
 
@@ -60,64 +60,67 @@ module.exports = function(grunt) {
               {expand: true, src: ['vendor/Zend/**'], dest: 'build/'},
               {expand: true, src: ['vendor/ZendX/**'], dest: 'build/'},
 
-        ]
-      },
+              ]
+            },
 
-      build: {
-        files: [
+            build: {
+                files: [
               // Application Files - includes files within path
               {expand: true, src: ['application/**'], dest: 'build/'},
 
               {expand: true, src: ['public/**'], dest: 'build/'},
               {src: ['public/.htaccess'], dest: 'build/public/.htaccess'},
 
-        ]
-      },
+              ]
+            },
 
-    },
-
-    clean: {
-      build: ["build/application", "build/public"],
-      buildAll: ["build"],
-    },
-
-    csslint: {
-      strict: {
-        options: {
-          "box-sizing": false,
-          import: 2
         },
-        src: ['public/css/*.css']
-      },
-      lax: {
-        options: {
-          "box-sizing": false,
-          import: false
+
+        clean: {
+            build: ["build/application", "build/public"],
+            buildAll: ["build"],
         },
-        src: ['public/css/*.css']
-      }
-    },
 
-    useminPrepare: {
-      html: ['build/application/views/scripts/index/index.phtml']
-    },
-    usemin: {
-      html: ['build/application/views/scripts/index/index.phtml', 'build/application/views/scripts/web-apps/index.phtml']
-    },
+        csslint: {
+            strict: {
+                options: {
+                    "box-sizing": false,
+                    import: 2
+                },
+                src: ['public/css/*.css']
+            },
+            lax: {
+                options: {
+                    "box-sizing": false,
+                    import: false
+                },
+                src: ['public/css/*.css']
+            }
+        },
 
-    cssmin: {
-      minify: {
-        files: {
-          'build/public/css/app.min.css': ['build/public/css/app.css', 
-                                           'build/public/vendor/yamm3/yamm.css', 
-                                           'build/public/vendor/nProgress/nProgress.css',
-                                           'build/public/vendor/dynaTable/jquery.dynatable.css']
+        useminPrepare: {
+            html: ['build/application/views/scripts/index/index.phtml']
+        },
+        usemin: {
+            html: ['build/application/views/scripts/index/index.phtml', 'build/application/views/scripts/web-apps/index.phtml']
+        },
+
+        cssmin: {
+            minify: {
+                options: {
+                    keepSpecialComments: 0,
+                },
+                files: {
+                    'build/public/css/app.min.css': ['build/public/css/app.css', 
+                    'build/public/css/modal.css',
+                    'build/public/vendor/yamm3/yamm.css', 
+                    'build/public/vendor/nProgress/nProgress.css',
+                    'build/public/vendor/dynaTable/jquery.dynatable.css']
+                }
+            }
         }
-      }
-    }
 
-
-  });
+    });
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
