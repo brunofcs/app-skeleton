@@ -15,9 +15,6 @@ class AppPDF extends TCPDF {
 
         $this->setX(30);
 
-        $y      = $this->getY();
-        $margin = $this->getMargins();
-
         // Title
         $this->Cell(0, 25, 'Create Header of App Here', 0, false, 'C', 0, '', 0, false, 'C', 'M');
         

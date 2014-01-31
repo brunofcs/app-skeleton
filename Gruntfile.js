@@ -118,7 +118,17 @@ module.exports = function(grunt) {
                     'build/public/vendor/dynaTable/jquery.dynatable.css']
                 }
             }
-        }
+        },
+
+     php_analyzer: {
+        options: {
+          bin: 'php-analyzer/bin/phpalizer',
+        },
+        your_target: {
+          dir: 'application',
+          command: 'run', /** also possible to use a target to automatically build the db/run any phpalizer command **/
+        },
+      },
 
     });
 
@@ -141,8 +151,10 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-cssmin');
 
+  grunt.loadNpmTasks('grunt-php-analyzer');
 
-  grunt.registerTask('default', ['jshint','jslint', 'inlinelint', 'csslint']);
+
+  grunt.registerTask('default', ['jshint','jslint', 'inlinelint', 'csslint', 'php_analyzer']);
 
   grunt.registerTask('build', ['clean:build', 'default', 'copy:build', 'uglify:build', 'usemin', 'cssmin']);
 

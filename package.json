@@ -12,6 +12,7 @@
     "grunt-contrib-csslint": "~0.2.0",
     "grunt-contrib-htmlmin": "~0.1.3",
     "grunt-contrib-cssmin": "~0.7.0",
-    "grunt-usemin": "~2.0.2"
+    "grunt-usemin": "~2.0.2",
+    "grunt-php-analyzer": "~0.1.0"
   }
 }

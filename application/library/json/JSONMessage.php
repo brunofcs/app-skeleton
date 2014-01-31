@@ -30,7 +30,7 @@ class JSONMessage {
 	 *  Local de armazenamento de todas as mensagens que devem ser devolvidas
 	 *  para o cliente
 	 */
-	private $messages = array();
+	public $message = array();
 
 
 	/**

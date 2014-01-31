@@ -94,12 +94,10 @@ class OpcImpressaoTesteController extends DefaultViewController {
                     // Disponibiliza os dados buscados para a View
                     $this->view->qryRegistros = $qryRegistros;
 
-                    // Renderiza a View
-
                     break;
 
                 case 3:
-                    die('Formato não disponível');
+                    // die('Formato não disponível');
                     break;
 
             }

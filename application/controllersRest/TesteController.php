@@ -4,8 +4,8 @@ class Rest_TesteController extends Zend_Rest_Controller
 {
 
     public function preDispatch() {
-                /* @var $ajaxContext Zend_Controller_Action_Helper_AjaxContext */
-        $ajaxContext = $this->_helper->getHelper('AjaxContext')->addActionContext('index', 'json'); 
+        /* @var $ajaxContext Zend_Controller_Action_Helper_AjaxContext */
+        // $ajaxContext = $this->_helper->getHelper('AjaxContext')->addActionContext('index', 'json'); 
         // $ajaxContext->addActionContext('get', 'html');
         // $ajaxContext->addActionContext('post', 'json');
         // $ajaxContext->addActionContext('put', 'json');

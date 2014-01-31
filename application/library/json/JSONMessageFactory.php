@@ -123,9 +123,6 @@ class JSONMessageFactory {
 
 		// Cria o objeto JSON
 		$jsonM          = new JSONMessageGrid();
-
-		// Atribui o tipo da mensagem
-		$jsonM->type    = JSONType::GRID;
 		
 		// Atribui os registros do Grid
 		$jsonM->records = $data;

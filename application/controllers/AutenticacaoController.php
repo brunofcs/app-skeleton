@@ -59,7 +59,7 @@ class AutenticacaoController extends DefaultViewController
 
                 // Verifica se o login foi executado com sucesso
                 if($authResult->isValid()) {
-            
+
                     // Envia uma mensagem de Redirecionamento para a Interface
                     JSONMessage::getInstance()->add(JSONMessageFactory::factoryRedir('/webApps'));
 
