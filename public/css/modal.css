@@ -107,3 +107,7 @@
 .modal-footer-dsin button .glyph-green {
   color:#62b776;
 }
+
+.well-modal-err {
+  margin-bottom: 0;
+}

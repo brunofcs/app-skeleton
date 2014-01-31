@@ -295,13 +295,17 @@ function openModal(url, unloadCallback) {
     newModal.find('.modal').modal({remote: url});
 }
 
-function loadFormValidation(idForm, idContainerMessage) {
+function loadFormValidation(idForm, idContainerMessage, errorAsTooltip) {
     'use strict';
 
     $(idForm).parsley('destroy');
     $(idForm).parsley({
         errors: {
             container: function (element) {
+
+                if (errorAsTooltip)
+                    return null;
+
                 var $container = $(idContainerMessage);
                 if ($container.length === 0) {
                     $container = $("<div id='' class='parsley-container'></div>").insertBefore(element);
@@ -310,6 +314,34 @@ function loadFormValidation(idForm, idContainerMessage) {
             }
         }
     });
+    if (errorAsTooltip) {
+        $(idForm).parsley('addListener', {
+            onFieldError: function (elem, constraints, ParsleyField) {
+
+                var title = "",
+                    constraint;
+
+                for (constraint in constraints) {
+                    if (constraints.hasOwnProperty(constraint)) {
+                        if (ParsleyField.options[constraint + "Message"]) {
+                            title += ParsleyField.options[constraint + "Message"] + "<br>";
+                        }
+                    }
+                }
+                $(elem).attr('data-toggle', 'tooltip').attr('title', title);
+            },
+            onFormValidate: function (isFormValid, event, ParsleyForm) {
+
+                if (!isFormValid) {
+                    $('[data-toggle="tooltip"]').tooltip({
+                        animation: false,
+                        trigger: 'hover',
+                        html: true
+                    });
+                }
+            }
+        });
+    }
 }
 
 function openPrintModal(formID) {
