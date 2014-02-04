@@ -2,6 +2,10 @@
 
 class Util {
 
+	public static function dataDiff($oldRowData, $newRowData) {
+		return json_encode(array_diff_assoc($oldRowData, $newRowData));
+	}
+
 	public static function getRealIpAddr() {
 
 		//check ip from share internet

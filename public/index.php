@@ -23,6 +23,8 @@ require_once 'exceptions/DSINWebAppsException.php';
 require_once 'SecurityHelper.php';
 require_once 'JSONMessageFactory.php';
 require_once 'ModelsHelper.php';
+require_once 'Util.php';
+require_once 'UserLogger.php';
 
 // Check Application environment to define debug configurations
 if(getenv("APPLICATION_ENV") == DEVELOPMENT_MODE) {

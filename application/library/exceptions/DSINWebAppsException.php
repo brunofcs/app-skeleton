@@ -6,7 +6,7 @@ class DSINWebAppsException extends Exception {
 	const ERRO_BANCO_DADOS_DESCONECTADO = 2;
 	const ERRO_ARQUIVO_NAO_ENCONTRADO   = 3;
 	const ERRO_REGISTRO_NAO_ENCONTRADO  = 4;
-
+	const ERRO_GRAVACAO_LOG			 	= 5;
 
 	/*
 	 * Construtor definido para chamada do construtor da classe extendida
