@@ -17,6 +17,10 @@ Lista:
 
  ☐ Corrigir o Parsley que mostra os tooltips, ver como foi feito no programa de vaga especial
  ☐ Corrigir scroll aparecendo no message box. COntainer antes do dsin-confirmatio overflow-hidden
+ ☐ Pegar o cadastro de Usuário da Aula de vaga especial e adicionar aqui para ficar de exemplo
+ ☐ Definir e utilizar regra apra comentários de funcoes e metodos (Utilizar algum padrão existente de preferencia que seja capaz de ser extraido)
+ ☐ Analisar quando ocorrer uma excecao nao programada, gravar no banco de dados as informacoes do ambiente de execucao para avaliar sem a necessidade de reexecutar o erro
+ ☐ Comentar util.php
 
 Recursos:
 

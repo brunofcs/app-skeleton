@@ -233,8 +233,12 @@ class Rest_OpcCadTesteController extends DefaultAppRestController {
                     // Salva o registro no banco de dados
                     $cadastroTeste->save();
 
+                    // Registra a acao do usuario no banco de dados
+                    UserLogger::log(1, 'Cod: ' . $cadastroTeste->CDCDTCODIGO);
+
                     // Comita a transacao
                     Zend_Registry::getInstance()->dbAdapter->commit();
+
 
                 // Recupera a Excecao Mais Geral
                 // Pode ser expecificada a excecao caso seja necessário algum tipo de tratamento, neste caso
@@ -260,7 +264,7 @@ class Rest_OpcCadTesteController extends DefaultAppRestController {
 
         } catch(DSINWebAppsException $dwaex) {
 
-            JSONMessage::getInstance()->add(JSONMessageFactory::factoryException($dwaex->getMessage()));
+            JSONMessage::getInstance()->add(JSONMessageFactory::factoryException($dwaex->getMessage(), true));
 
         } catch(Exception $ex) {
 
@@ -298,12 +302,17 @@ class Rest_OpcCadTesteController extends DefaultAppRestController {
                         // Inicia a transacao
                         Zend_Registry::getInstance()->dbAdapter->beginTransaction();
 
+                        $oldRec = $cadastroTeste->toArray();
+
                         // Altera os dados
                         $cadastroTeste->CDCDTDESCRICAO  = $this->_dataModule->camposForm['descricao'];
                         $cadastroTeste->CDCDTOBSERVACAO = $this->_dataModule->camposForm['observacao'];
 
                         // Salva o registro
                         $cadastroTeste->save();
+
+                        // Registra a acao do usuario no banco de dados
+                        UserLogger::log(2, 'Cod: ' . $cadastroTeste->CDCDTCODIGO, null, Util::dataDiff($oldRec, $cadastroTeste->toArray()));
 
                         // Comita a transacao
                         Zend_Registry::getInstance()->dbAdapter->commit();
@@ -370,8 +379,14 @@ class Rest_OpcCadTesteController extends DefaultAppRestController {
                     // Inicia a transacao
                     Zend_Registry::getInstance()->dbAdapter->beginTransaction();
 
+                    // Recupera os dados atuais do registro
+                    $oldRec = $cadastroTeste->toArray();
+
                     // Deleta or egistro
                     $cadastroTeste->delete();
+
+                    // Registra a acao do usuario no banco de dados
+                    UserLogger::log(3, 'Cod: ' . $oldRec['CDCDTCODIGO'], null, Util::dataDiff($oldRec));
 
                     // Comita a transacao
                     Zend_Registry::getInstance()->dbAdapter->commit();

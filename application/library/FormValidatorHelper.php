@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe contendo dados e metodos para validação de formularios 
+ * In these class we have methods to validate data
  *
  *
  * Autor: Bruno F. C. Silva
