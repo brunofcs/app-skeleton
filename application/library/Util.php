@@ -2,7 +2,7 @@
 
 class Util {
 
-	public static function dataDiff($oldRowData, $newRowData) {
+	public static function dataDiff($oldRowData, $newRowData = array()) {
 		return json_encode(array_diff_assoc($oldRowData, $newRowData));
 	}
 

@@ -386,7 +386,7 @@ class Rest_OpcCadTesteController extends DefaultAppRestController {
                     $cadastroTeste->delete();
 
                     // Registra a acao do usuario no banco de dados
-                    UserLogger::log(3, 'Cod: ' . $oldRec['CDCDTCODIGO'], null, Util::dataDiff($oldRec, array()));
+                    UserLogger::log(3, 'Cod: ' . $oldRec['CDCDTCODIGO'], null, Util::dataDiff($oldRec));
 
                     // Comita a transacao
                     Zend_Registry::getInstance()->dbAdapter->commit();
