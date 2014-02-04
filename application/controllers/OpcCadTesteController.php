@@ -33,9 +33,6 @@ class OpcCadTesteController extends DefaultViewController {
         parent::preDispatch();
 
         // Extrai caracteres invalidos de dados enviados
-        $this->_request->setParams(SecurityHelper::secureEnvData($this->_request->getParams()));
-
-        // Extrai caracteres invalidos de dados enviados
         $this->_dataModule->camposForm = SecurityHelper::preparaDadosFormulario($this->_dataModule->camposForm, $this->_request->getParams());
 
         // disponibiliza o nome do controller para view. Deve ser executado apenas após da preparacao dos dados

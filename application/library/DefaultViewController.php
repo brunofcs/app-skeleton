@@ -13,5 +13,8 @@ class DefaultViewController extends Zend_Controller_Action {
 
         // Verifica se o login foi efetuado
         SecurityHelper::verifyAuth($this) == false ? $this->_redirect("/") : '';
+
+        // Extrai caracteres invalidos de dados enviados
+        $this->_request->setParams(SecurityHelper::secureEnvData($this->_request->getParams()));
     }
 }

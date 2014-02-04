@@ -501,7 +501,6 @@
       this.removeErrors();
       this.ParsleyInstance.validatedOnce = false;
       this.errorClassHandler.removeClass( this.options.successClass ).removeClass( this.options.errorClass );
-
       for ( var constraint in this.constraints ) {
         this.constraints[ constraint ].valid = null;
       }
@@ -1103,6 +1102,7 @@
     , destroy: function () {
       this.$element.removeClass( 'parsley-validated' );
       this.UI.reset();
+
       this.$element.off( '.' + this.type ).removeData( this.type );
     }
   };
@@ -1399,6 +1399,8 @@
         this.items[ item ].destroy();
       }
 
+      this.options.listeners.onFormReset(this);
+
       this.$element.off( '.' + this.type ).removeData( this.type );
     }
 
@@ -1584,6 +1586,7 @@
       , onFormValidate: function ( isFormValid, event, ParsleyForm ) {}     // Executed once on form validation. Return (bool) false to block submit, even if valid
       , onFieldError: function ( elem, constraints, ParsleyField ) {}     // Executed when a field is detected as invalid
       , onFieldSuccess: function ( elem, constraints, ParsleyField ) {}   // Executed when a field passes validation
+      , onFormReset: function ( ParsleyForm ) {}   // Executed when a form is destroyed. (Reset)
     }
   };
 

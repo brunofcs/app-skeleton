@@ -303,8 +303,9 @@ function loadFormValidation(idForm, idContainerMessage, errorAsTooltip) {
         errors: {
             container: function (element) {
 
-                if (errorAsTooltip)
+                if (errorAsTooltip) {
                     return null;
+                }
 
                 var $container = $(idContainerMessage);
                 if ($container.length === 0) {
@@ -317,19 +318,27 @@ function loadFormValidation(idForm, idContainerMessage, errorAsTooltip) {
     if (errorAsTooltip) {
         $(idForm).parsley('addListener', {
             onFieldError: function (elem, constraints, ParsleyField) {
-
                 var title = "",
                     constraint;
 
                 for (constraint in constraints) {
                     if (constraints.hasOwnProperty(constraint)) {
-                        if (ParsleyField.options[constraint + "Message"]) {
-                            title += ParsleyField.options[constraint + "Message"] + "<br>";
+                        if (!constraints[constraint].valid) {
+                            if (ParsleyField.options[constraint + "Message"]) {
+                                title += ParsleyField.options[constraint + "Message"] + "<br>";
+                            } else if (ParsleyField.options["type" + (ParsleyField.options.type.charAt(0).toUpperCase() + ParsleyField.options.type.slice(1)) + "Message"]) {
+                                title += ParsleyField.options["type" + (ParsleyField.options.type.charAt(0).toUpperCase() + ParsleyField.options.type.slice(1)) + "Message"] + "<br>";
+                            }
                         }
                     }
                 }
                 $(elem).attr('data-toggle', 'tooltip').attr('title', title);
             },
+
+            onFieldSuccess: function (elem, constraints, ParsleyField) {
+                elem.removeAttr('data-toggle').removeAttr('title').removeAttr('data-original-title');
+            },
+
             onFormValidate: function (isFormValid, event, ParsleyForm) {
 
                 if (!isFormValid) {
@@ -338,6 +347,14 @@ function loadFormValidation(idForm, idContainerMessage, errorAsTooltip) {
                         trigger: 'hover',
                         html: true
                     });
+                }
+            },
+            onFormReset: function (ParsleyForm) {
+
+                var i;
+
+                for (i = 0; i < ParsleyForm.items.length; i++) {
+                    ParsleyForm.items[i].$element.removeAttr('data-toggle').removeAttr('title').removeAttr('data-original-title');
                 }
             }
         });

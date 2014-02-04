@@ -15,6 +15,9 @@ Lista:
  ☐ Verificar a possibilidade de utilizar o travis-ci
  ☐ configurar o grunt para pegar a pasta build atraves de uma variavel
 
+ ☐ Corrigir o Parsley que mostra os tooltips, ver como foi feito no programa de vaga especial
+ ☐ Corrigir scroll aparecendo no message box. COntainer antes do dsin-confirmatio overflow-hidden
+
 Recursos:
 
   ☐ Validador de Formulário:
