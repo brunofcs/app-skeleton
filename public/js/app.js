@@ -125,7 +125,7 @@ DSINConnect.parseJSONResponse = function (jsonMessage, options) {
 
         $(params.messagesContainer).html(errContent);
 
-        $(params.formId + ' input[name=' + jsonMessage[0].fieldFocus + ']').focus();
+        $(params.formID + ' input[name=' + jsonMessage[0].fieldFocus + ']').focus();
 
         break;
 
@@ -146,7 +146,7 @@ DSINConnect.parseJSONResponse = function (jsonMessage, options) {
         }
 
         if (jsonMessage[0].fieldFocus) {
-            $(params.formId + ' input[name=' + jsonMessage[0].fieldFocus + ']').focus();
+            $(params.formID + ' input[name=' + jsonMessage[0].fieldFocus + ']').focus();
         }
 
         break;
@@ -158,7 +158,7 @@ DSINConnect.parseJSONResponse = function (jsonMessage, options) {
         }
 
         if (jsonMessage[0].fieldFocus) {
-            $(params.formId + ' input[name=' + jsonMessage[0].fieldFocus + ']').focus();
+            $(params.formID + ' input[name=' + jsonMessage[0].fieldFocus + ']').focus();
         }
 
         break;
